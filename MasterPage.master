@@ -1,0 +1,151 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+<!--
+Zachary Curry
+
+On my honor, I have neither given nor received any unauthorized assistance on
+this academic work
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Master</title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        body{
+            width: 80%;
+            margin:0 auto;
+            background-color: #240045  /* #450084 */
+        }
+        .top-bottom{
+            background-color: #000000; /* #240045 */
+            color: white;
+            }
+        .LeftNavWords{
+            Width: 100px;
+            }
+        .left-pane {
+            background-color: #FFFFFF; /* #FFFFFF */
+        }
+        .right-pane {
+            background-color: #C2A14D; /* #C2!14D */
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <table>
+            <tr>
+                <td colspan="2" class="top-bottom"> 
+                    Created by Zachary Curry<br />
+                    1. Please add Contractor before adding either a Driver or any Equipment<br />
+                    2. Please add Driver before adding a piece of Equipment<br />
+                    3. Dates should be entered as a "MM/DD/YYYY" format<br />
+                    4. Please enter dollar amounts without commas or the "$" in "Fee", "Salary", and "Price Acquired"<br />
+                    5. Insert adds a Contractor to the array, max Contractors allowed at one time is 3<br />
+                    6. Commit enters the values (from array) into the database (and clears the array)<br />
+                    7. <strong>BOLD</strong> Lables indicate where information is required to commit to the database<br />
+                    8. No numbers allowed in the name fields
+                </td>
+            </tr>
+            <tr>
+                <td class="left-pane">
+                    <table class="LeftNavPane">
+                        <tr>
+                            <td><strong>Add</strong></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button
+                                    ID="btnMContractor" 
+                                    runat="server"
+                                    Text="Contractor"
+                                    CssClass="LeftNavWords"
+                                    OnClick="btnMContractor_Click"
+                                    CausesValidation="False" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button
+                                    ID="btnMDriver"
+                                    runat="server"
+                                    Text="Driver"
+                                    CssClass="LeftNavWords"
+                                    OnClick="btnMDriver_Click"
+                                    CausesValidation="False" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button
+                                    ID="btnMEquipment"
+                                    runat="server"
+                                    Text="Equipment"
+                                    CssClass="LeftNavWords"
+                                    OnClick="btnMEquipment_Click"
+                                    CausesValidation="False" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Display</strong></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button
+                                    ID="btnMDisplayFee"
+                                    runat="server"
+                                    Text="Total Fees"
+                                    CssClass="LeftNavWords"
+                                    OnClick="btnMDisplayFee_Click"
+                                    CausesValidation="False" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <asp:Button
+                                    ID="btnMDisplayDriverEquipment"
+                                    runat="server"
+                                    Text="Driver / Equipment"
+                                    Width="142px"
+                                    OnClick="btnMDisplayDriverEquipment_Click"
+                                    CausesValidation="False"  />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="right-pane">
+                <asp:ContentPlaceHolder
+                    id="ContentPlaceHolder1"
+                    runat="server">
+                </asp:ContentPlaceHolder>
+                </td>
+            </tr>
+            <tr>
+                <td class="top-bottom" colspan="2">
+                    <asp:TextBox
+                        ID="tbMDisplayData"
+                        runat="server"
+                        BorderWidth="8px"
+                        Height="100px"
+                        ReadOnly="True"
+                        Wrap="False"
+                        Width="100%"
+                        BackColor="White"
+                        BorderColor="#000000"
+                        TextMode="MultiLine" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    </form>
+</body>
+</html>
